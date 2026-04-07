@@ -18,9 +18,9 @@ export async function generateMetadata(props: {
     title: tag,
     description: `${siteMetadata.title} ${tag} tagged content`,
     alternates: {
-      canonical: './',
+      canonical: `${siteMetadata.siteUrl}/topics/${tag}`,
       types: {
-        'application/rss+xml': `${siteMetadata.siteUrl}/tags/${tag}/feed.xml`,
+        'application/rss+xml': `${siteMetadata.siteUrl}/topics/${tag}/feed.xml`,
       },
     },
   })

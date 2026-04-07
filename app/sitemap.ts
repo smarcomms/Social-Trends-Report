@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import { allBlogs } from 'contentlayer/generated'
 import siteMetadata from '@/data/siteMetadata'
+import tagData from 'app/tag-data.json'
+import { slug } from 'github-slugger'
 
 export const dynamic = 'force-static'
 
@@ -14,10 +16,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: post.lastmod || post.date,
     }))
 
-  const routes = ['', 'blog', 'projects', 'tags'].map((route) => ({
+  const routes = ['', 'blog', 'projects', 'topics', 'about'].map((route) => ({
     url: `${siteUrl}/${route}`,
     lastModified: new Date().toISOString().split('T')[0],
   }))
 
-  return [...routes, ...blogRoutes]
+  const tagRoutes = Object.keys(tagData).map((tag) => ({
+    url: `${siteUrl}/topics/${slug(tag)}`,
+    lastModified: new Date().toISOString().split('T')[0],
+  }))
+
+  return [...routes, ...blogRoutes, ...tagRoutes]
 }

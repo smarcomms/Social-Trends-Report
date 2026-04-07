@@ -4,7 +4,11 @@ import { slug } from 'github-slugger'
 import tagData from 'app/tag-data.json'
 import { genPageMetadata } from 'app/seo'
 
-export const metadata = genPageMetadata({ title: 'Topics', description: 'Things I blog about' })
+export const metadata = genPageMetadata({
+  title: 'Topics',
+  description:
+    'Browse articles by topic — social media strategy, platform updates, content marketing, and digital marketing analysis.',
+})
 
 export default async function Page() {
   const tagCounts = tagData as Record<string, number>
@@ -25,7 +29,7 @@ export default async function Page() {
               <div key={t} className="mt-2 mr-5 mb-2">
                 <Tag text={t} />
                 <Link
-                  href={`/tags/${slug(t)}`}
+                  href={`/topics/${slug(t)}`}
                   className="-ml-2 text-sm font-semibold text-gray-600 uppercase dark:text-gray-300"
                   aria-label={`View posts on ${t}`}
                 >

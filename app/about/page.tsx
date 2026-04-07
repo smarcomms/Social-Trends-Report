@@ -5,7 +5,11 @@ import { genPageMetadata } from 'app/seo'
 import Image from 'next/image'
 import Link from '@/components/Link'
 
-export const metadata = genPageMetadata({ title: 'Authors' })
+export const metadata = genPageMetadata({
+  title: 'About',
+  description:
+    'Meet the marketing professionals behind Social Trends Report — independent social media analysis and strategy insights.',
+})
 
 export default function Page() {
   const authors = allAuthors.filter(
@@ -42,9 +46,9 @@ export default function Page() {
                     />
                   </div>
                   <div className="text-center md:text-left">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                       {author.name}
-                    </h3>
+                    </h2>
                     <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
                       {author.occupation}
                     </p>

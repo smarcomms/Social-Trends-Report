@@ -6,6 +6,7 @@ import { Space_Grotesk } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Header'
+import TopBanner from '@/components/TopBanner'
 import SectionContainer from '@/components/SectionContainer'
 import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
@@ -28,14 +29,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteMetadata.title,
     description: siteMetadata.description,
-    url: './',
+    url: siteMetadata.siteUrl,
     siteName: siteMetadata.title,
     images: [siteMetadata.socialBanner],
     locale: 'en_US',
     type: 'website',
   },
   alternates: {
-    canonical: './',
+    canonical: siteMetadata.siteUrl,
     types: {
       'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
     },
@@ -95,8 +96,44 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
       <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                name: siteMetadata.title,
+                url: siteMetadata.siteUrl,
+                logo: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
+                sameAs: [
+                  siteMetadata.x,
+                  siteMetadata.facebook,
+                  siteMetadata.youtube,
+                  siteMetadata.linkedin,
+                  siteMetadata.threads,
+                  siteMetadata.instagram,
+                  siteMetadata.mastodon,
+                  siteMetadata.bluesky,
+                ].filter(Boolean),
+              },
+              {
+                '@context': 'https://schema.org',
+                '@type': 'WebSite',
+                name: siteMetadata.title,
+                url: siteMetadata.siteUrl,
+                potentialAction: {
+                  '@type': 'SearchAction',
+                  target: `${siteMetadata.siteUrl}/blog?q={search_term_string}`,
+                  'query-input': 'required name=search_term_string',
+                },
+              },
+            ]),
+          }}
+        />
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
+          <TopBanner />
           <SectionContainer>
             <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
               <Header />
