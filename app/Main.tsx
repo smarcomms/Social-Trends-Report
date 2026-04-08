@@ -5,12 +5,12 @@ import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
 
-const MAX_DISPLAY = 9
+const MAX_DISPLAY = 12
 
 export default function Home({ posts }) {
   const featuredPost = posts[0]
-  const popularPosts = posts.slice(1, 6)
-  const latestPosts = posts.slice(6, 6 + MAX_DISPLAY)
+  const popularPosts = posts.slice(1, 5)
+  const latestPosts = posts.slice(1, 1 + MAX_DISPLAY)
 
   return (
     <>

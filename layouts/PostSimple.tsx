@@ -4,6 +4,7 @@ import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
 import Comments from '@/components/Comments'
 import Link from '@/components/Link'
+import Image from '@/components/Image'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import siteMetadata from '@/data/siteMetadata'
@@ -19,7 +20,8 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, next, prev, children }: LayoutProps) {
-  const { path, slug, date, title } = content
+  const { path, slug, date, title, images } = content
+  const featuredImage = images && images.length > 0 ? images[0] : null
 
   return (
     <SectionContainer>
@@ -43,7 +45,19 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
           </header>
           <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:divide-y-0 dark:divide-gray-700">
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
-              <div className="prose dark:prose-invert max-w-none pt-10 pb-8">{children}</div>
+              {featuredImage && (
+                <div className="pt-6">
+                  <Image
+                    src={featuredImage}
+                    alt={title}
+                    width={1600}
+                    height={900}
+                    className="aspect-video w-full rounded-2xl object-cover"
+                    priority
+                  />
+                </div>
+              )}
+              <div className="prose dark:prose-invert max-w-none pt-6 pb-8">{children}</div>
               <ShareArticle title={title} slug={slug} />
               <StaticComments />
             </div>

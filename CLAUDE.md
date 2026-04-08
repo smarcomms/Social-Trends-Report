@@ -49,6 +49,8 @@ This applies to links in blog post content (MDX), component templates, and any h
 
 ## Images
 - All images live in `public/static/images/` — no external image hosting for now
+- **Article featured images**: `public/static/images/articles/{slug}.png` — filename must match the article slug exactly. Used as the hero image at the top of the article and as the card thumbnail on the homepage. 16:9 aspect ratio.
+- **Alt text rule**: every image of an article uses `alt={title}` (the article title). Author/avatar images use the person's name. Decorative graphics (e.g. trust bar founder avatars) use `alt=""`. Never use generic alt text like "image" or "photo".
 - **Commenter avatars**: `public/static/images/commenters/` — named by commenter (e.g. `jessica-m.jpg`). Must match the gender of the commenter name. Currently stock placeholders — replace with AI-generated faces (e.g. via generated.photos or thispersondoesnotexist.com) when available
 - **Trust bar founder avatars**: `public/static/images/founders/founder-{1-6}.jpg` — generic headshots for social proof
 - **Blog post images**: `public/static/images/` — referenced in MDX frontmatter `images` field
