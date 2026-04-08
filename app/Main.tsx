@@ -133,12 +133,12 @@ export default function Home({ posts }) {
         <div className="flex items-center gap-5">
           <div className="flex -space-x-2">
             {[
-              '/static/images/alex-rivera.jpg',
-              '/static/images/mateo-silva.jpg',
-              '/static/images/riley-morgan.jpg',
-              '/static/images/jordan-blake.jpg',
-              '/static/images/taylor-quinn.jpg',
-              '/static/images/sparrowhawk-avatar.jpg',
+              '/static/images/founders/founder-1.jpg',
+              '/static/images/founders/founder-2.jpg',
+              '/static/images/founders/founder-3.jpg',
+              '/static/images/founders/founder-4.jpg',
+              '/static/images/founders/founder-5.jpg',
+              '/static/images/founders/founder-6.jpg',
             ].map((src, i) => (
               <img
                 key={i}

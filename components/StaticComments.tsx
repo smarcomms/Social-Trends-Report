@@ -20,14 +20,14 @@ interface Comment {
 const COMMENTS: Comment[] = [
   {
     author: 'Jessica M.',
-    avatar: '/static/images/alex-rivera.jpg',
+    avatar: '/static/images/commenters/jessica-m.jpg',
     date: '2 weeks ago',
     body: "I just signed up after reading this. Quick question — how long did it take to get the first batch after onboarding? I need content for my bakery ASAP and I'm trying to figure out if I should scramble to make some posts myself while I wait.",
     likes: 14,
     replies: [
       {
         author: 'Tyler Reed',
-        initials: 'TR',
+        avatar: '/static/images/commenters/tyler-reed.jpg',
         date: '2 weeks ago',
         body: "Hey Jessica! For both our test accounts, the first batch arrived within about 5–7 business days after onboarding. I'd recommend having a few posts of your own ready for the gap, but the turnaround was faster than I expected.",
         likes: 6,
@@ -36,21 +36,21 @@ const COMMENTS: Comment[] = [
   },
   {
     author: 'Marcus Chen',
-    avatar: '/static/images/mateo-silva.jpg',
+    avatar: '/static/images/commenters/marcus-chen.jpg',
     date: '1 week ago',
     body: "This is exactly the kind of breakdown I've been looking for. Most articles just scratch the surface but this actually goes into the strategy behind it. Shared it with my whole marketing team.",
     likes: 22,
     replies: [
       {
         author: 'Sarah K.',
-        avatar: '/static/images/riley-morgan.jpg',
+        avatar: '/static/images/commenters/sarah-k.jpg',
         date: '1 week ago',
         body: "Same — we've been going back and forth on our approach and this settled a lot of internal debates. The data on engagement rates was particularly useful.",
         likes: 8,
       },
       {
         author: 'David Park',
-        initials: 'DP',
+        avatar: '/static/images/commenters/david-park.jpg',
         date: '5 days ago',
         body: 'Agreed. We actually changed our Q2 strategy based on the insights here. Would love to see a follow-up piece on how this applies to B2B specifically.',
         likes: 4,
@@ -59,7 +59,7 @@ const COMMENTS: Comment[] = [
   },
   {
     author: 'Priya Sharma',
-    avatar: '/static/images/jordan-blake.jpg',
+    avatar: '/static/images/commenters/priya-sharma.jpg',
     date: '3 days ago',
     body: "Finally, an article that doesn't just say \"post more consistently\" and actually gives you something actionable. Bookmarked this one. Would love to see a deep dive on the analytics side of things too.",
     likes: 9,

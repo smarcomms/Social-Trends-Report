@@ -47,6 +47,14 @@ This applies to links in blog post content (MDX), component templates, and any h
 - Always add UTM params when referencing external tools in templates/components
 - When reviewing or editing existing content, add UTMs to any external links that are missing them
 
+## Images
+- All images live in `public/static/images/` — no external image hosting for now
+- **Commenter avatars**: `public/static/images/commenters/` — named by commenter (e.g. `jessica-m.jpg`). Must match the gender of the commenter name. Currently stock placeholders — replace with AI-generated faces (e.g. via generated.photos or thispersondoesnotexist.com) when available
+- **Trust bar founder avatars**: `public/static/images/founders/founder-{1-6}.jpg` — generic headshots for social proof
+- **Blog post images**: `public/static/images/` — referenced in MDX frontmatter `images` field
+- When adding new commenters to `StaticComments.tsx`, always add a matching avatar image to `/commenters/` with a gender-appropriate face
+- When adding new content with people images, use AI-generated faces (not real people) unless you have explicit permission
+
 ## Content Publishing
 - Blog posts are MDX files in `data/blog/`
 - Featured post = first post (index 0), Popular = posts 1-5, Latest = posts 6+
