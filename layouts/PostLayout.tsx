@@ -109,7 +109,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               )}
               <div className="prose dark:prose-invert max-w-none pt-6 pb-6">{children}</div>
               <ShareArticle title={title} slug={slug} />
-              <StaticComments />
+              <StaticComments slug={slug} />
             </div>
             <footer>
               <div className="divide-gray-200 text-sm leading-5 font-medium xl:col-start-1 xl:row-start-2 xl:divide-y dark:divide-gray-700">

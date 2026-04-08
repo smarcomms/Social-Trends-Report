@@ -60,7 +60,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
               )}
               <div className="prose dark:prose-invert max-w-none pt-6 pb-8">{children}</div>
               <ShareArticle title={title} slug={slug} />
-              <StaticComments />
+              <StaticComments slug={slug} />
             </div>
             <footer>
               <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">

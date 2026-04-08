@@ -129,8 +129,10 @@
   @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
 }
 
+/* Hide the GFM footnote backref icons — they render as broken glyphs in Space Grotesk */
+[data-footnote-backref],
 .data-footnote-backref {
-  @apply no-underline;
+  @apply hidden;
 }
 
 .csl-entry {
