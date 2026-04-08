@@ -6,6 +6,7 @@ import { genPageMetadata } from 'app/seo'
 
 export const metadata = genPageMetadata({
   title: 'Topics',
+  path: '/topics',
   description:
     'Browse articles by topic — social media strategy, platform updates, content marketing, and digital marketing analysis.',
 })

@@ -5,6 +5,7 @@ import { genPageMetadata } from 'app/seo'
 
 export const metadata = genPageMetadata({
   title: 'Social Trends Report — Social Media Marketing Insights & Strategy',
+  path: '/',
   description:
     'Stay ahead with expert analysis on social media trends, platform updates, and marketing strategy. Independent insights for marketers and brands.',
 })

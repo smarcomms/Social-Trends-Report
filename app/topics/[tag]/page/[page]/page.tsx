@@ -18,6 +18,7 @@ export async function generateMetadata(props: {
   const page = params.page
   return genPageMetadata({
     title: `${tag[0].toUpperCase() + tag.slice(1)} — Page ${page}`,
+    path: `/topics/${tag}/page/${page}`,
     description: `Browse page ${page} of articles tagged "${tag}" on Social Trends Report.`,
     alternates: {
       canonical: `${siteMetadata.siteUrl}/topics/${tag}/page/${page}`,

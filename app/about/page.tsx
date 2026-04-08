@@ -7,6 +7,7 @@ import Link from '@/components/Link'
 
 export const metadata = genPageMetadata({
   title: 'About',
+  path: '/about',
   description:
     'Meet the marketing professionals behind Social Trends Report — independent social media analysis and strategy insights.',
 })
@@ -36,15 +37,17 @@ export default function Page() {
                 className="overflow-hidden rounded-3xl border border-gray-200/80 bg-white/80 p-6 shadow-sm shadow-gray-900/5 backdrop-blur-sm transition hover:-translate-y-0.5 dark:border-gray-800/80 dark:bg-slate-950/80 dark:shadow-black/10"
               >
                 <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
-                  <div className="flex-shrink-0">
-                    <Image
-                      src={author.avatar}
-                      alt={author.name}
-                      width={120}
-                      height={120}
-                      className="h-[120px] w-[120px] rounded-full"
-                    />
-                  </div>
+                  {author.avatar ? (
+                    <div className="flex-shrink-0">
+                      <Image
+                        src={author.avatar}
+                        alt={author.name}
+                        width={120}
+                        height={120}
+                        className="h-[120px] w-[120px] rounded-full"
+                      />
+                    </div>
+                  ) : null}
                   <div className="text-center md:text-left">
                     <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                       {author.name}

@@ -7,6 +7,7 @@ const POSTS_PER_PAGE = 5
 
 export const metadata = genPageMetadata({
   title: 'Blog',
+  path: '/blog',
   description:
     'Read the latest articles on social media trends, platform updates, and marketing strategy from Social Trends Report.',
 })

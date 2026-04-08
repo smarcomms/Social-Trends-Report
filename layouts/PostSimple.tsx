@@ -20,7 +20,7 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, next, prev, children }: LayoutProps) {
-  const { path, slug, date, title, images } = content
+  const { path, slug, date, title, images, imageAlt } = content
   const featuredImage = images && images.length > 0 ? images[0] : null
 
   return (
@@ -49,9 +49,10 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                 <div className="pt-6">
                   <Image
                     src={featuredImage}
-                    alt={title}
+                    alt={imageAlt || title}
                     width={1600}
                     height={900}
+                    sizes="(max-width: 768px) 100vw, 900px"
                     className="aspect-video w-full rounded-2xl object-cover"
                     priority
                   />

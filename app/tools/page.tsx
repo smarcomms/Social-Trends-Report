@@ -1,6 +1,6 @@
 import { genPageMetadata } from 'app/seo'
 
-export const metadata = genPageMetadata({ title: 'Tools' })
+export const metadata = genPageMetadata({ title: 'Tools', path: '/tools' })
 
 export default function ToolsPage() {
   return (
@@ -12,7 +12,8 @@ export default function ToolsPage() {
         </h1>
       </div>
       <p className="mb-4 text-base leading-relaxed text-gray-500 dark:text-gray-400">
-        Practical tools for social media analysis and strategy — built to help you understand what's really happening, not just surface-level metrics.
+        Practical tools for social media analysis and strategy — built to help you understand what's
+        really happening, not just surface-level metrics.
       </p>
       <p className="text-sm text-gray-400 dark:text-gray-500">
         Subscribe to get notified when we launch.

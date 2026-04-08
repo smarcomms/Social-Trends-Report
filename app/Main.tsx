@@ -9,11 +9,14 @@ const MAX_DISPLAY = 12
 
 export default function Home({ posts }) {
   const featuredPost = posts[0]
-  const popularPosts = posts.slice(1, 5)
+  const popularPosts = posts.slice(1, 6)
   const latestPosts = posts.slice(1, 1 + MAX_DISPLAY)
 
   return (
     <>
+      <h1 className="sr-only">
+        Social Trends Report — Independent Social Media Marketing Insights & Strategy
+      </h1>
       <section className="grid gap-6 pb-10 lg:grid-cols-[minmax(0,1.6fr)_1fr] lg:items-stretch">
         {featuredPost ? (
           <article className="h-full rounded-2xl border border-gray-200 bg-white p-6 shadow-sm shadow-gray-200/50 dark:border-gray-800 dark:bg-gray-950 dark:shadow-transparent">
@@ -27,18 +30,20 @@ export default function Home({ posts }) {
                   alt={featuredPost.title}
                   width={1200}
                   height={600}
+                  sizes="(max-width: 1024px) 100vw, 750px"
                   className="aspect-video w-full object-cover"
+                  priority
                 />
               </div>
             ) : null}
-            <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl dark:text-gray-100">
+            <h2 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl dark:text-gray-100">
               <Link
                 href={`/blog/${featuredPost.slug}`}
                 className="hover:text-primary-600 dark:hover:text-primary-300"
               >
                 {featuredPost.title}
               </Link>
-            </h1>
+            </h2>
             <p className="mt-3 max-w-2xl text-base leading-7 text-gray-600 dark:text-gray-300">
               {featuredPost.summary}
             </p>
@@ -107,20 +112,34 @@ export default function Home({ posts }) {
                 'Data-backed insights, not opinions',
               ].map((item) => (
                 <div key={item} className="flex gap-2.5">
-                  <svg className="mt-0.5 h-4 w-4 shrink-0 text-green-600 dark:text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  <svg
+                    className="mt-0.5 h-4 w-4 shrink-0 text-green-600 dark:text-green-500"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
                   </svg>
-                  <span className="text-sm leading-snug text-gray-700 dark:text-gray-300">{item}</span>
+                  <span className="text-sm leading-snug text-gray-700 dark:text-gray-300">
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>
             <div className="mt-5 flex items-center gap-3 border-t border-gray-200 pt-4 dark:border-gray-700">
               <div className="flex gap-0.5 text-amber-400">
                 {'★★★★★'.split('').map((s, i) => (
-                  <span key={i} className="text-sm">{s}</span>
+                  <span key={i} className="text-sm">
+                    {s}
+                  </span>
                 ))}
               </div>
-              <span className="text-xs text-gray-500 dark:text-gray-400">Rated 4.9 by subscribers</span>
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                Rated 4.9 by subscribers
+              </span>
             </div>
           </div>
         </aside>
@@ -144,6 +163,9 @@ export default function Home({ posts }) {
                 key={i}
                 src={src}
                 alt=""
+                width={40}
+                height={40}
+                aria-hidden="true"
                 className="h-10 w-10 rounded-full border-2 border-[#1e293b] object-cover dark:border-gray-900"
               />
             ))}
@@ -161,7 +183,12 @@ export default function Home({ posts }) {
             {/* Stripe logo */}
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#635bff]">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path fillRule="evenodd" clipRule="evenodd" d="M12.3 8.4C12.3 7.5 13 7.1 14.2 7.1C15.9 7.1 18 7.7 19.7 8.7V3.6C17.8 2.8 16 2.5 14.2 2.5C10.2 2.5 7.5 4.6 7.5 8.1C7.5 13.5 14.7 12.6 14.7 15C14.7 16.1 13.8 16.5 12.5 16.5C10.7 16.5 8.3 15.7 6.4 14.5V19.7C8.5 20.6 10.5 21 12.5 21C16.6 21 19.5 19 19.5 15.4C19.5 9.6 12.3 10.7 12.3 8.4Z" fill="white" />
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M12.3 8.4C12.3 7.5 13 7.1 14.2 7.1C15.9 7.1 18 7.7 19.7 8.7V3.6C17.8 2.8 16 2.5 14.2 2.5C10.2 2.5 7.5 4.6 7.5 8.1C7.5 13.5 14.7 12.6 14.7 15C14.7 16.1 13.8 16.5 12.5 16.5C10.7 16.5 8.3 15.7 6.4 14.5V19.7C8.5 20.6 10.5 21 12.5 21C16.6 21 19.5 19 19.5 15.4C19.5 9.6 12.3 10.7 12.3 8.4Z"
+                  fill="white"
+                />
               </svg>
             </div>
           </div>
@@ -183,10 +210,7 @@ export default function Home({ posts }) {
               {latestPosts.map((post) => {
                 const { slug, date, title, summary, tags } = post
                 return (
-                  <article
-                    key={slug}
-                    className="flex gap-5 py-6 first:pt-0"
-                  >
+                  <article key={slug} className="flex gap-5 py-6 first:pt-0">
                     {post.images?.[0] ? (
                       <Link href={`/blog/${slug}`} className="hidden flex-shrink-0 sm:block">
                         <div className="h-32 w-48 overflow-hidden rounded-lg">
@@ -195,13 +219,14 @@ export default function Home({ posts }) {
                             alt={title}
                             width={240}
                             height={160}
+                            sizes="192px"
                             className="h-full w-full object-cover"
                           />
                         </div>
                       </Link>
                     ) : null}
                     <div className="flex min-w-0 flex-col justify-center space-y-1.5">
-                      <h3 className="text-lg font-bold leading-snug tracking-tight text-gray-900 dark:text-gray-100">
+                      <h3 className="text-lg leading-snug font-bold tracking-tight text-gray-900 dark:text-gray-100">
                         <Link
                           href={`/blog/${slug}`}
                           className="hover:text-primary-600 dark:hover:text-primary-400"
@@ -246,7 +271,10 @@ export default function Home({ posts }) {
           <div className="sticky top-6 space-y-8">
             {/* Newsletter CTA */}
             {siteMetadata.newsletter?.provider && (
-              <div id="newsletter" className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-950">
+              <div
+                id="newsletter"
+                className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-950"
+              >
                 <div className="border-primary-500 mb-3 w-8 border-t-[3px]" />
                 <h3 className="text-lg font-bold tracking-tight text-gray-900 dark:text-gray-100">
                   Get the free newsletter
@@ -254,7 +282,7 @@ export default function Home({ posts }) {
                 <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                   Subscribe to {siteMetadata.title} for top news, trends &amp; analysis
                 </p>
-                <div className="mt-4 [&_input]:w-full! [&_input]:rounded-full! [&_input]:px-4! [&_input]:py-2! [&_form]:flex-col! [&_form>div]:ml-0! [&_form>div]:mt-3! [&_button]:w-full! [&_button]:rounded-full! [&_button]:px-4! [&_button]:py-2! [&_button]:text-sm! [&_button]:font-semibold!">
+                <div className="mt-4 [&_button]:w-full! [&_button]:rounded-full! [&_button]:px-4! [&_button]:py-2! [&_button]:text-sm! [&_button]:font-semibold! [&_form]:flex-col! [&_form>div]:mt-3! [&_form>div]:ml-0! [&_input]:w-full! [&_input]:rounded-full! [&_input]:px-4! [&_input]:py-2!">
                   <NewsletterForm title=" " />
                 </div>
               </div>
@@ -280,11 +308,12 @@ export default function Home({ posts }) {
                           alt={post.title}
                           width={80}
                           height={56}
+                          sizes="80px"
                           className="h-full w-full object-cover"
                         />
                       </div>
                     ) : null}
-                    <span className="group-hover:text-primary-600 dark:group-hover:text-primary-400 text-sm font-semibold leading-snug text-gray-900 dark:text-gray-100">
+                    <span className="group-hover:text-primary-600 dark:group-hover:text-primary-400 text-sm leading-snug font-semibold text-gray-900 dark:text-gray-100">
                       {post.title}
                     </span>
                   </Link>

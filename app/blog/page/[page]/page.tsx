@@ -14,6 +14,7 @@ export async function generateMetadata(props: {
   const page = params.page
   return genPageMetadata({
     title: `Blog — Page ${page}`,
+    path: `/blog/page/${page}`,
     description: `Browse page ${page} of all articles on social media trends, platform updates, and marketing strategy.`,
   })
 }

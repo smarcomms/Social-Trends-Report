@@ -1,6 +1,6 @@
 import { genPageMetadata } from 'app/seo'
 
-export const metadata = genPageMetadata({ title: 'Guides' })
+export const metadata = genPageMetadata({ title: 'Guides', path: '/guides' })
 
 export default function GuidesPage() {
   return (
@@ -12,7 +12,8 @@ export default function GuidesPage() {
         </h1>
       </div>
       <p className="mb-4 text-base leading-relaxed text-gray-500 dark:text-gray-400">
-        Deep dives into social media strategy, platform changes, and what actually works — written by practicing marketers, not recycled advice.
+        Deep dives into social media strategy, platform changes, and what actually works — written
+        by practicing marketers, not recycled advice.
       </p>
       <p className="text-sm text-gray-400 dark:text-gray-500">
         Subscribe to get notified when we publish.

@@ -1,5 +1,4 @@
 import 'css/prism.css'
-import 'katex/dist/katex.css'
 
 import PageTitle from '@/components/PageTitle'
 import { components } from '@/components/MDXComponents'
@@ -49,26 +48,33 @@ export async function generateMetadata(props: {
     }
   })
 
+  const canonicalUrl = `${siteMetadata.siteUrl}/${post.path}`
+  const seoTitle = post.seoTitle || post.title
+  const seoDescription = post.seoDescription || post.summary
+
   return {
-    title: post.title,
-    description: post.summary,
+    title: seoTitle,
+    description: seoDescription,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
-      title: post.title,
-      description: post.summary,
+      title: seoTitle,
+      description: seoDescription,
       siteName: siteMetadata.title,
       locale: 'en_US',
       type: 'article',
       publishedTime: publishedAt,
       modifiedTime: modifiedAt,
-      url: './',
+      url: canonicalUrl,
       images: ogImages,
       authors: authors.length > 0 ? authors : [siteMetadata.author],
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
-      description: post.summary,
-      images: imageList,
+      title: seoTitle,
+      description: seoDescription,
+      images: ogImages.map((img) => img.url),
     },
   }
 }
@@ -96,13 +102,28 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
     return coreContent(authorResults as Authors)
   })
   const mainContent = coreContent(post)
-  const jsonLd = post.structuredData
-  jsonLd['author'] = authorDetails.map((author) => {
-    return {
+  const canonicalUrl = `${siteMetadata.siteUrl}/${post.path}`
+  const jsonLd = {
+    ...post.structuredData,
+    '@id': canonicalUrl,
+    url: canonicalUrl,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': canonicalUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: siteMetadata.title,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
+      },
+    },
+    author: authorDetails.map((author) => ({
       '@type': 'Person',
       name: author.name,
-    }
-  })
+    })),
+  }
 
   const Layout = layouts[post.layout || defaultLayout]
 
